@@ -18,10 +18,7 @@ def count_number_of_trees(offset):
     number_of_trees = 0
     while pos_y < len(puzzle_input):
         number_of_trees += 1 if puzzle_input[pos_y][pos_x] == "#" else 0
-        (pos_x, pos_y) = (
-            pos_x + offset.x if pos_x + offset.x < map_len else pos_x + offset.x - map_len,
-            pos_y + offset.y
-        )
+        (pos_x, pos_y) = ((pos_x + offset.x) % map_len, pos_y + offset.y)
     return number_of_trees
 
 
