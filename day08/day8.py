@@ -19,7 +19,7 @@ class CodeInterpreter:
 
     def proceed_instructions(self):
         while not self.__proceed_next_instruction():
-            pass
+            continue
         return InterpreterResult(self.accumulator, self.is_valid)
 
     def __proceed_next_instruction(self):
@@ -65,7 +65,7 @@ def find_corrupted_instruction(instructions_input):
     for i, instruction in enumerate(instructions):
         if instruction.operation == Instruction.NOOP or instruction.operation == Instruction.JUMP:
             new_instructions = deepcopy(instructions)
-            new_instructions[i].operation = Instruction.NOOP if instruction.operation == Instruction.JUMP else Instruction.NOOP
+            new_instructions[i].operation = Instruction.NOOP if instruction.operation == Instruction.JUMP else Instruction.JUMP
             result = CodeInterpreter(new_instructions, debug).proceed_instructions()
             if result.is_valid:
                 return result.accumulator
