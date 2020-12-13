@@ -54,7 +54,7 @@ def find_manhattan_distance_part_two(instructions):
             action_result = ACTIONS[instruction[0]](ship_direction[0], ship_direction[1], instruction[1])
             waypoint_position = apply_offset(waypoint_position, action_result[1])
         else:
-            for turn in list(range(given_value // 90)):
+            for _ in list(range(given_value // 90)):
                 ship_to_waypoint_offset = waypoint_position[0] - ship_position[0], waypoint_position[1] - ship_position[1]
                 if action == "L":
                     waypoint_position = ship_position[0] + ship_to_waypoint_offset[1], ship_position[1] - ship_to_waypoint_offset[0]
