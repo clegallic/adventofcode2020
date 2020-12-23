@@ -30,7 +30,7 @@ def eval_formula_match(formula_match, eval_formula_function):
 
 def eval_formula_part_one(formula):
     first_term = re.match(r"\d+", formula).group()
-    other_terms = re.findall(r"\s[\+*]\s\d+", formula[len(first_term):])
+    other_terms = re.findall(r"\s[+*]\s\d+", formula[len(first_term):])
     return str(functools.reduce(lambda left, right: str(eval(left + right)), other_terms, first_term))
 
 
